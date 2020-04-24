@@ -3,6 +3,7 @@ package com.application.event.listener.demo.listener;
 import com.application.event.listener.demo.bean.UserBean;
 import com.application.event.listener.demo.event.UserRegisterEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,12 +17,13 @@ public class UserRegisterListener {
      *
      * @param userRegisterEvent 用户注册事件
      */
+    @Async
     @EventListener
     public void register(UserRegisterEvent userRegisterEvent) {
         //获取注册用户对象
         UserBean user = userRegisterEvent.getUser();
 
         //输出注册用户信息
-        System.out.println("@EventListener注册信息，用户名：" + user.getName() + "，密码：" + user.getPassword());
+        System.out.println("线程ID：" + Thread.currentThread().getId() + " 监听器：@EventListener-2用户注册监听，发送邮件。用户名：" + user.getName() + "，密码：" + user.getPassword());
     }
 }

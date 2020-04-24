@@ -2,7 +2,6 @@ package com.application.event.listener.demo.listener;
 
 import com.application.event.listener.demo.bean.UserBean;
 import com.application.event.listener.demo.event.UserRegisterEvent;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -29,7 +28,6 @@ public class ApplicationAsyncRegisterListener implements ApplicationListener<Use
         //UserRegisterEvent userRegisterEvent = (UserRegisterEvent) applicationEvent;
         //获取注册用户对象信息
         UserBean user = userRegisterEvent.getUser();
-        ;
-        System.out.println("线程：" + Thread.currentThread().getName() + " 静静的沉睡3秒钟,ApplicationAsyncRegisterListener->用户：" + user.getName() + "，注册成功，发送邮件通知。");
+        System.out.println("线程ID：" + Thread.currentThread().getId() + " 线程名称：" + Thread.currentThread().getName() + " 静静的沉睡3秒钟,ApplicationAsyncRegisterListener->用户：" + user.getName() + "，注册成功，发送邮件通知。");
     }
 }

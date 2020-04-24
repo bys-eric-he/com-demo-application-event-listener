@@ -16,6 +16,6 @@ public class RegisterUserEmailListener {
     public void sendMail(UserRegisterEvent userRegisterEvent) {
         //获取注册用户对象
         UserBean user = userRegisterEvent.getUser();
-        System.out.println("用户注册成功，发送邮件。用户名：" + user.getName() + "，密码：" + user.getPassword());
+        System.out.println("线程ID：" + Thread.currentThread().getId() + " 监听器：@EventListener-1用户注册成功，发送邮件。用户名：" + user.getName() + "，密码：" + user.getPassword());
     }
 }

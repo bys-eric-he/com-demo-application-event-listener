@@ -5,6 +5,7 @@ import com.application.event.listener.demo.event.UserRegisterEvent;
 import com.application.event.listener.demo.service.UserService;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.SmartApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -46,6 +47,7 @@ public class SmartApplicationRegisterListener implements SmartApplicationListene
      *
      * @param applicationEvent 具体监听实例，这里是UserRegisterEvent
      */
+    @Async
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
 
@@ -54,7 +56,7 @@ public class SmartApplicationRegisterListener implements SmartApplicationListene
         //获取注册用户对象信息
         UserBean user = userRegisterEvent.getUser();
         //.../完成注册业务逻辑
-        System.out.println("SmartApplicationRegisterListener->注册信息，用户名：" + user.getName() + "，密码：" + user.getPassword());
+        System.out.println("线程ID：" + Thread.currentThread().getId() + " 监听器：SmartApplicationRegisterListener->注册信息，用户名：" + user.getName() + "，密码：" + user.getPassword());
     }
 
     /**
